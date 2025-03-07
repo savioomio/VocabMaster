@@ -193,3 +193,233 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+// Adicione este código ao final do arquivo scripts.js
+
+// Funções para o plano de estudo de 100 dias
+function initStudyPlanInteractivity() {
+    const daySlider = document.getElementById('daySlider');
+    const dayValue = document.getElementById('dayValue');
+    const progressCircle = document.getElementById('progressCircle');
+    const wordCount = document.getElementById('wordCount');
+    
+    if (!daySlider || !dayValue || !progressCircle || !wordCount) return;
+    
+    // Comprimento total da circunferência do círculo SVG
+    const circumference = 2 * Math.PI * 120;
+    
+    // Atualiza o progresso visual quando o slider é movido
+    daySlider.addEventListener('input', function() {
+        const days = parseInt(this.value);
+        
+        // Atualizar texto de dias
+        dayValue.textContent = days;
+        
+        // Calcular palavras aprendidas (10 por dia)
+        const words = days * 10;
+        wordCount.textContent = words;
+        
+        // Atualizar círculo de progresso
+        const progress = days / 100;
+        const dashoffset = circumference * (1 - progress);
+        progressCircle.style.strokeDasharray = circumference;
+        progressCircle.style.strokeDashoffset = dashoffset;
+        
+        // Atualizar marcos visuais
+        updateMilestones(progress);
+    });
+    
+    // Função para atualizar a visibilidade dos marcos de progresso
+    function updateMilestones(progress) {
+        const milestone25 = document.getElementById('milestone25');
+        const milestone50 = document.getElementById('milestone50');
+        const milestone75 = document.getElementById('milestone75');
+        const milestone100 = document.getElementById('milestone100');
+        
+        if (!milestone25 || !milestone50 || !milestone75 || !milestone100) return;
+        
+        milestone25.style.opacity = progress >= 0.25 ? "1" : "0.4";
+        milestone50.style.opacity = progress >= 0.5 ? "1" : "0.4";
+        milestone75.style.opacity = progress >= 0.75 ? "1" : "0.4";
+        milestone100.style.opacity = progress >= 1 ? "1" : "0.4";
+    }
+    
+    // Adicionar interatividade ao cartão de palavra
+    const wordCard = document.querySelector('.word-card');
+    if (wordCard) {
+        wordCard.addEventListener('click', function() {
+            this.classList.toggle('flipped');
+        });
+    }
+    
+    // Inicializar com valores zero
+    daySlider.value = 0;
+    dayValue.textContent = "0";
+    wordCount.textContent = "0";
+    progressCircle.style.strokeDasharray = circumference;
+    progressCircle.style.strokeDashoffset = circumference;
+}
+
+// Executar inicialização quando o documento estiver pronto
+window.addEventListener('load', function() {
+    // Inicializar interatividade do plano de estudo
+    initStudyPlanInteractivity();
+    
+    // Isso mantém todas as outras funções que você já tem
+    revealSections();
+    updateProgressBar();
+    animateCards();
+    
+    // Chamar a revelação da seção do plano de estudo também
+    setTimeout(() => {
+        const studyPlanSection = document.getElementById('study-plan');
+        if (studyPlanSection) {
+            studyPlanSection.classList.add('visible');
+        }
+    }, 300);
+});
+
+// Adicione este código ao seu arquivo JavaScript
+
+// Inicialização e gerenciamento da calculadora de vocabulário
+function initVocabularyCalculator() {
+    const daysInput = document.getElementById('daysInput');
+    const wordsPerDayInput = document.getElementById('wordsPerDayInput');
+    const totalWordsResult = document.getElementById('totalWordsResult');
+    const calculateBtn = document.getElementById('calculateBtn');
+    const progressCircle = document.getElementById('calculatorProgress');
+    const progressPercentage = document.getElementById('progressPercentage');
+    
+    // Referencias aos marcos de progresso
+    const milestone250 = document.querySelector('#milestone250 .milestone-progress');
+    const milestone500 = document.querySelector('#milestone500 .milestone-progress');
+    const milestone1000 = document.querySelector('#milestone1000 .milestone-progress');
+    const milestone2000 = document.querySelector('#milestone2000 .milestone-progress');
+    
+    // Verificar se os elementos foram encontrados
+    if (!daysInput || !wordsPerDayInput || !totalWordsResult || !calculateBtn || 
+        !progressCircle || !progressPercentage) {
+        console.error('Elementos da calculadora não encontrados');
+        return;
+    }
+    
+    // Comprimento da circunferência do círculo SVG
+    const circumference = 2 * Math.PI * 54;
+    progressCircle.style.strokeDasharray = circumference;
+    progressCircle.style.strokeDashoffset = circumference;
+    
+    // Função para calcular palavras e atualizar visuais
+    function calculateVocabulary() {
+        const days = parseInt(daysInput.value) || 0;
+        const wordsPerDay = parseInt(wordsPerDayInput.value) || 0;
+        const totalWords = days * wordsPerDay;
+        
+        // Atualizar o resultado
+        totalWordsResult.textContent = totalWords.toLocaleString();
+        
+        // Calcular percentual para o gráfico circular (baseado em 2000 palavras como 100%)
+        const maxWords = 2000;
+        const percentage = Math.min(totalWords / maxWords * 100, 100);
+        
+        // Atualizar o círculo de progresso
+        const dashoffset = circumference - (circumference * percentage / 100);
+        progressCircle.style.strokeDashoffset = dashoffset;
+        
+        // Atualizar o texto de percentual
+        progressPercentage.textContent = Math.round(percentage) + '%';
+        
+        // Atualizar barras de progresso dos marcos
+        updateMilestones(totalWords);
+        
+        // Animação de destaque nos resultados
+        totalWordsResult.classList.add('highlight');
+        setTimeout(() => {
+            totalWordsResult.classList.remove('highlight');
+        }, 500);
+    }
+    
+    // Atualizar barras de progresso dos marcos
+    function updateMilestones(totalWords) {
+        if (!milestone250 || !milestone500 || !milestone1000 || !milestone2000) return;
+        
+        // Calcular percentagens para cada marco
+        const progress250 = Math.min(totalWords / 250 * 100, 100);
+        const progress500 = Math.min(totalWords / 500 * 100, 100);
+        const progress1000 = Math.min(totalWords / 1000 * 100, 100);
+        const progress2000 = Math.min(totalWords / 2000 * 100, 100);
+        
+        // Aplicar as percentagens às barras de progresso com animação
+        milestone250.style.width = progress250 + '%';
+        milestone500.style.width = progress500 + '%';
+        milestone1000.style.width = progress1000 + '%';
+        milestone2000.style.width = progress2000 + '%';
+    }
+    
+    // Evento de clique no botão de calcular
+    calculateBtn.addEventListener('click', calculateVocabulary);
+    
+    // Eventos de tecla Enter nos inputs
+    daysInput.addEventListener('keyup', function(event) {
+        if (event.key === 'Enter') {
+            calculateVocabulary();
+        }
+    });
+    
+    wordsPerDayInput.addEventListener('keyup', function(event) {
+        if (event.key === 'Enter') {
+            calculateVocabulary();
+        }
+    });
+    
+    // Configurar limites de input
+    daysInput.addEventListener('change', function() {
+        if (this.value < 0) this.value = 0;
+        if (this.value > 365) this.value = 365;
+    });
+    
+    wordsPerDayInput.addEventListener('change', function() {
+        if (this.value < 1) this.value = 1;
+        if (this.value > 50) this.value = 50;
+    });
+    
+    // Inicializar a calculadora com os valores padrão
+    calculateVocabulary();
+    
+    // Adicionar a classe para estilo de destaque (inclua isso em seu CSS)
+    const style = document.createElement('style');
+    style.textContent = `
+        .highlight {
+            animation: pulse 0.5s ease-out;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); color: var(--accent); }
+            100% { transform: scale(1); }
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+// Adicionar à inicialização da página
+window.addEventListener('load', function() {
+    // Inicializar calculadora de vocabulário
+    initVocabularyCalculator();
+    
+    // Manter outras inicializações existentes
+    if (typeof initStudyPlanInteractivity === 'function') {
+        initStudyPlanInteractivity();
+    }
+    
+    if (typeof revealSections === 'function') {
+        revealSections();
+    }
+    
+    if (typeof updateProgressBar === 'function') {
+        updateProgressBar();
+    }
+    
+    if (typeof animateCards === 'function') {
+        animateCards();
+    }
+});

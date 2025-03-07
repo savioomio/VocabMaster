@@ -279,7 +279,6 @@ main {
 
 .content-wrapper {
     display: grid;
-    grid-template-columns: 1fr 1fr;
     gap: 2rem;
     align-items: center;
 }
@@ -698,4 +697,573 @@ footer {
     background: var(--accent);
     width: 0%;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para a seção do plano de estudo - adicione ao final do arquivo styles.css */
+
+/* Estilos para a estrutura do plano */
+.plan-structure {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-left: 4px solid var(--secondary);
+}
+
+.plan-structure h3 {
+    margin-bottom: 1rem;
+    color: var(--primary);
+}
+
+.plan-structure ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.plan-structure li {
+    margin-bottom: 0.5rem;
+    padding-left: 1rem;
+    position: relative;
+}
+
+.plan-structure li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--secondary);
+}
+
+/* Estilos para o exemplo de palavra */
+.example-box {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.example-box h5 {
+    margin-bottom: 1rem;
+    color: var(--primary);
+}
+
+.word-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    transition: transform 0.3s;
+    cursor: pointer;
+    position: relative;
+}
+
+.word-card:hover {
+    transform: translateY(-5px);
+}
+
+.word-front h4 {
+    color: var(--primary);
+    margin-bottom: 0.25rem;
+}
+
+.pronunciation {
+    color: var(--text-light);
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+.word-back {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+/* Estilos para ciclos de revisão */
+.review-cycles {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.cycle {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 6px;
+    padding: 0.75rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.day {
+    background-color: var(--secondary);
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 500;
+    margin-right: 1rem;
+    min-width: 60px;
+    text-align: center;
+}
+
+.action {
+    flex: 1;
+}
+
+/* Estilos para o exemplo de prática */
+.practice-example {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.practice-example blockquote {
+    border-left: 3px solid var(--secondary);
+    padding-left: 1rem;
+    margin: 1rem 0;
+    font-style: italic;
+}
+
+/* Estilos para as estratégias complementares */
+.strategies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.strategy-item {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s;
+}
+
+.strategy-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.strategy-icon {
+    font-size: 1.5rem;
+    color: var(--secondary);
+    margin-bottom: 1rem;
+}
+
+.strategy-item h4 {
+    color: var(--primary);
+    margin-bottom: 0.25rem;
+}
+
+.strategy-item p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.strategy-item ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.strategy-item li {
+    margin-bottom: 0.5rem;
+    padding-left: 1rem;
+    position: relative;
+    font-size: 0.95rem;
+}
+
+.strategy-item li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--secondary);
+}
+
+/* Estilos para o resumo do plano */
+.plan-summary {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-top: 3rem;
+    @media screen and (max-width: 768px) {
+        padding: 0px;
+    }
+}
+
+.plan-summary h3 {
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.summary-steps {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.summary-step {
+    display: flex;
+    align-items: flex-start;
+    background-color: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    width: 300px;
+    transition: transform 0.3s;
+}
+
+.summary-step:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.step-number {
+    background-color: var(--secondary);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-right: 1rem;
+}
+
+.step-content {
+    flex: 1;
+}
+
+.step-time {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+}
+
+.step-detail {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-top: 0.5rem;
+}
+
+.final-message {
+    text-align: center;
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background-color: #e8f4fd;
+    border-radius: 8px;
+    border-left: 4px solid var(--secondary);
+}
+
+.final-message p {
+    margin-bottom: 0.5rem;
+}
+
+.final-message p:last-child {
+    margin-bottom: 0;
+}
+
+/* Estilos para controles interativos */
+.interactive-progress {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.progress-controls {
+    max-width: 500px;
+    margin: 1.5rem auto;
+}
+
+.slider {
+    width: 100%;
+    height: 8px;
+    border-radius: 5px;
+    background: #ddd;
+    outline: none;
+    -webkit-appearance: none;
+    margin-top: 1rem;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--secondary);
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.slider::-webkit-slider-thumb:hover {
+    background: var(--primary);
+}
+
+.slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--secondary);
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.slider::-moz-range-thumb:hover {
+    background: var(--primary);
+}
+
+/* Animação para o gráfico de progresso SVG */
+.study-plan-progress {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.milestone {
+    transition: opacity 0.5s;
+}
+
+/* Adicione estes estilos ao seu arquivo CSS para a calculadora interativa */
+
+.calculator-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    background-color: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    margin: 2rem auto;
+    max-width: 800px;
+}
+
+.calculator-controls {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.calculator-visual {
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.input-group label {
+    font-weight: 500;
+    color: var(--primary);
+}
+
+.num-input {
+    padding: 0.75rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    transition: border 0.3s;
+}
+
+.num-input:focus {
+    border-color: var(--secondary);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+.calculator-result {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.result-label {
+    font-weight: 500;
+    color: var(--primary);
+}
+
+.result-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--secondary);
+}
+
+.calculate-btn {
+    background-color: var(--secondary);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.calculate-btn:hover {
+    background-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.calculate-btn:active {
+    transform: translateY(0);
+}
+
+.result-circle {
+    position: relative;
+    width: 180px;
+    height: 180px;
+}
+
+.result-circle svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.circle-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+#progressPercentage {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+    display: block;
+}
+
+.small-text {
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+/* Estilos para os marcos de vocabulário */
+.vocabulary-milestones {
+    margin-top: 2.5rem;
+    background-color: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.vocabulary-milestones h5 {
+    margin-bottom: 1.5rem;
+    color: var(--primary);
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.milestone-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.milestone-item {
+    flex: 1;
+    min-width: 120px;
+    margin-bottom: 1rem;
+}
+
+.milestone-value {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.milestone-label {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+}
+
+.milestone-bar {
+    height: 8px;
+    background-color: #ecf0f1;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.milestone-progress {
+    height: 100%;
+    background-color: var(--secondary);
+    border-radius: 4px;
+    width: 0%;
+    transition: width 0.8s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+}
+
+/* Estilos para marcos específicos */
+#milestone250 .milestone-progress {
+    background-color: #3498db;
+}
+
+#milestone500 .milestone-progress {
+    background-color: #2ecc71;
+}
+
+#milestone1000 .milestone-progress {
+    background-color: #f39c12;
+}
+
+#milestone2000 .milestone-progress {
+    background-color: #e74c3c;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .calculator-container {
+        flex-direction: column;
+        padding: 1.5rem;
+    }
+    
+    .milestone-container {
+        flex-direction: column;
+    }
+    
+    .milestone-item {
+        min-width: 100%;
+    }
+    
+    .calculator-visual {
+        margin-top: 1.5rem;
+    }
+}
+
+/* Media queries para responsividade */
+@media (max-width: 768px) {
+    .summary-steps {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .summary-step {
+        width: 100%;
+    }
+    
+    .strategies-grid {
+        grid-template-columns: 1fr;
+    }
 }
